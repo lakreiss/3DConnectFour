@@ -4,13 +4,14 @@ package parts;
  * Created by liamkreiss on 3/9/19.
  */
 public class Piece {
-    private Player player;
+    private Player owner;
+//    Color c; TODO
 
     public Piece(Player p) {
-        this.player = p;
+        this.owner = p;
     }
 
-    public Player getPlayer() {
-        return player;
+    public Player getOwner() {
+        return owner;
     }
 }

@@ -27,9 +27,17 @@ public class PieceSpace {
 
     public Player getPlayer() {
         if (isOccupied()) {
-            return piece.getPlayer();
+            return piece.getOwner();
         } else {
             return null;
+        }
+    }
+
+    public String toString() {
+        if (!occupied) {
+            return "0";
+        } else {
+            return piece.getOwner().toString();
         }
     }
 }
