@@ -61,6 +61,8 @@ public class Main extends Application {
             System.out.println(gs.getWinner().toString() + " wins!");
         }
 
+        System.out.println("Final Board State:\n" + gameboard.toString());
+
     }
 
 
