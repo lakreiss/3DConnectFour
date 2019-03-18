@@ -1,5 +1,7 @@
 package parts;
 
+import players.Player;
+
 /**
  * Created by liamkreiss on 3/9/19.
  */
@@ -48,6 +50,9 @@ ___________________/
     }
 
     public boolean isLegalMove(Move move) {
+        if (move == null) {
+            throw new Error("Move is null");
+        }
         if (move.getRow() < 0 || move.getRow() >= BOARD_DIM) {
             return false;
         }
@@ -426,6 +431,26 @@ ___________________/
 
     private boolean isTop(int k) {
         return k == 0;
+    }
+
+    public int getSize() {
+        return this.BOARD_DIM;
+    }
+
+    public Board clone() {
+        Board b = new Board();
+        b.setBoardPieces(this.board_pieces);
+        return b;
+    }
+
+    private void setBoardPieces(PieceSpace[][][] board_pieces_in) {
+        for (int i = 0; i < board_pieces_in.length; i++) {
+            for (int j = 0; j < board_pieces_in[0].length; j++) {
+                for (int k = 0; k < board_pieces_in[0][0].length; k++) {
+                    this.board_pieces[i][j][k] = board_pieces_in[i][j][k].clone();
+                }
+            }
+        }
     }
 
     public String toString() {

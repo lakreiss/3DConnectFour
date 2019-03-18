@@ -26,4 +26,8 @@ public class Move {
     public Piece getPiece() {
         return piece;
     }
+
+    public String toString() {
+        return String.format("row: %d col: %d owner: %s", row, col, piece.getOwner());
+    }
 }

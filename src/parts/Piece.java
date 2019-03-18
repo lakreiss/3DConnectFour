@@ -1,5 +1,7 @@
 package parts;
 
+import players.Player;
+
 /**
  * Created by liamkreiss on 3/9/19.
  */

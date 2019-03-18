@@ -1,4 +1,8 @@
-package parts;
+package players;
+
+import parts.Board;
+import parts.Move;
+import parts.Piece;
 
 import java.util.Scanner;
 
@@ -6,8 +10,8 @@ import java.util.Scanner;
  * Created by liamkreiss on 3/9/19.
  */
 public class Player {
-    Piece playersPiece;
-    String name;
+    protected Piece playersPiece;
+    protected String name;
 
     public Player(String name) {
         Piece p = new Piece(this);
@@ -15,12 +19,16 @@ public class Player {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public Piece getPlayersPiece() {
         return playersPiece;
     }
 
     //each instance of Player should implement this
-    public Move getMove(Board gameboard) {
+    public Move getMove(Board gameboard, Player opponent) {
         System.out.println("Current Board:");
         System.out.printf(gameboard.toString());
         Scanner console = new Scanner(System.in);
@@ -28,14 +36,19 @@ public class Player {
         int row = console.nextLine().toLowerCase().charAt(0) - ((int) 'a');
 
         System.out.printf("%s, what column would you like to place your piece in? (1, 2, 3, or 4) ", this.name);
-        int col = console.nextInt() - 1;
+        int col;
+        if (console.hasNextInt()) {
+            col = console.nextInt() - 1;
+        } else {
+            return getMove(gameboard, opponent);
+        }
 
         Move move = new Move(row, col, this.playersPiece);
         if (gameboard.isLegalMove(move)) {
             return move;
         } else {
             System.out.println("Illegal entry. Please start over.");
-            return getMove(gameboard);
+            return getMove(gameboard, opponent);
         }
     }
 
