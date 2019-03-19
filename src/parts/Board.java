@@ -453,6 +453,10 @@ ___________________/
         }
     }
 
+    public PieceSpace getPieceSpace(int i, int j, int k) {
+        return board_pieces[i][j][k];
+    }
+
     public String toString() {
         String output = "";
         output += "Top\n";
@@ -472,4 +476,5 @@ ___________________/
         }
         return output;
     }
+
 }

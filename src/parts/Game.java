@@ -11,20 +11,18 @@ public class Game {
     private Board gameboard;
     private Player p1;
     private Player p2;
+    private Player winner;
 
-    public Game() {
+    public Game(Player p1, Player p2) {
         this.gameboard = new Board();
-//        this.p1 = new Player("A");
-//        this.p1 = new EasyComputer("C");
-        this.p1 = new MediumComputer("E");
-//        this.p2 = new Player("B");
-//        this.p2 = new EasyComputer("D");
-        this.p2 = new MediumComputer("F");
 
-        startGame();
+        this.p1 = p1;
+        this.p2 = p2;
+
+        runGame();
     }
 
-    public void startGame() {
+    public void runGame() {
         boolean p1Turn = true;
         Move curMove;
         int k; //k is the level that the move fell to, with 0 being the top and 3 being the bottom
@@ -50,12 +48,30 @@ public class Game {
         }
 
         if (gs.isTie()) {
+            winner = null;
             System.out.println("It's a tie!");
         } else {
+            if (p1Turn) {
+                winner = p1;
+            } else {
+                winner = p2;
+            }
             System.out.println(gs.getWinner().toString() + " wins!");
         }
 
         System.out.println("Final Board State:\n" + gameboard.toString());
 
+    }
+
+    public Player getP1() {
+        return p1;
+    }
+
+    public Player getP2() {
+        return p2;
+    }
+
+    public Player getWinner() {
+        return winner;
     }
 }

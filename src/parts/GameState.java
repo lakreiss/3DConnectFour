@@ -14,7 +14,7 @@ public class GameState {
         this.gameOver = gameOver;
         this.winner = winner;
         this.tie = false;
-        if (gameOver && winner.equals(null)) {
+        if (gameOver && winner == null) {
             this.tie = true;
         }
     }
