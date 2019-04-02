@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import parts.Board;
 import parts.Game;
+import parts.VisualGame;
 import players.EasyComputer;
 import players.GeneticPlayer;
 import players.Player;
@@ -19,10 +20,10 @@ public class Main extends Application {
 //        primaryStage.setScene(new Scene(root, 300, 275));
 //        primaryStage.show();
 
-//        initializeGame();
+        initializeGame(primaryStage);
 
-        String trainingFile = "training15529636364.txt";
-        initializeTraining(trainingFile, 20);
+//        String trainingFile = "training15529636364.txt";
+//        initializeTraining(trainingFile, 20);
 
 //        playGeneticAlgorithm();
     }
@@ -33,15 +34,16 @@ public class Main extends Application {
         Game g = new Game(p1, p2);
     }
 
-    private void initializeGame() {
+    private void initializeGame(Stage primaryStage) throws FileNotFoundException {
         Player p1 = new Player("A");
 //        Player p1 = new EasyComputer("C");
 
 
-        Player p2 = new Player("B");
-//        Player p2 = new EasyComputer("D");
+//        Player p2 = new Player("B");
+        Player p2 = new EasyComputer("D");
 
-        Game g = new Game(p1, p2);
+//        Game g = new Game(p1, p2);
+        VisualGame g = new VisualGame(primaryStage);
 //        g.startGame();
     }
 

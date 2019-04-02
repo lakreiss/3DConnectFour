@@ -1,28 +1,31 @@
 package parts;
 
 import graphics.GraphicsRenderer;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
-import players.EasyComputer;
-import players.MediumComputer;
 import players.Player;
 
+import java.io.FileNotFoundException;
+
 /**
- * Created by liamkreiss on 3/10/19.
+ * Created by liamkreiss on 4/1/19.
  */
-public class Game {
+public class VisualGame {
     private Board gameboard;
     private Player p1;
     private Player p2;
     private Player winner;
+    private GraphicsRenderer gr;
 
-    public Game(Player p1, Player p2) {
+    public VisualGame(Stage primarySage) throws FileNotFoundException {
+        this.gr = new GraphicsRenderer(primarySage, this.gameboard);
+    }
+
+    public void setPlayers(Player p1, Player p2) {
         this.gameboard = new Board();
-
         this.p1 = p1;
         this.p2 = p2;
 
-        runGame();
+        gr.
     }
 
     public void runGame() {
