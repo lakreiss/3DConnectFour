@@ -17,15 +17,14 @@ public class VisualGame {
     private GraphicsRenderer gr;
 
     public VisualGame(Stage primarySage) throws FileNotFoundException {
+        this.gameboard = new Board();
         this.gr = new GraphicsRenderer(primarySage, this.gameboard);
     }
 
     public void setPlayers(Player p1, Player p2) {
-        this.gameboard = new Board();
         this.p1 = p1;
         this.p2 = p2;
-
-        gr.
+        runGame();
     }
 
     public void runGame() {
